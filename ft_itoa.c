@@ -1,26 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kezekiel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 15:06:15 by kezekiel          #+#    #+#             */
+/*   Updated: 2021/10/08 15:34:15 by kezekiel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char    *ft_itoa(int n)
+int	absolute_value(int nbr)
 {
-  char  *str;
-  char  *t;
-  char  *u;
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
+}
 
-  str = (char *)malloc(16);
-  if (str == NULL)
-    return (NULL);
-  t = str;
-  if (n < 0)
-    *t++ = '-';
-  if (n > 0)
-    n = -n;
-  if (n <= -10)
-  {
-    u = ft_itoa(-(n / 10));
-    while (*u)
-      *t++ = *u++;
-  }
-  *t = '0' - n % 10;
-  *(t + 1) = '\0';
-  return (str);
+int	get_len(int nbr)
+{
+	int	len;
+
+	len = 0;
+	if (nbr <= 0)
+		++len;
+	while (nbr != 0)
+	{
+		++len;
+		nbr = nbr / 10;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int nbr)
+{
+	char	*result;
+	int		len;
+
+	len = get_len(nbr);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!(result))
+		return (NULL);
+	result[len] = '\0';
+	if (nbr < 0)
+		result[0] = '-';
+	else if (nbr == 0)
+		result[0] = '0';
+	while (nbr != 0)
+	{
+		--len;
+		result[len] = absolute_value(nbr % 10) + '0';
+		nbr = nbr / 10;
+	}
+	return (result);
 }
