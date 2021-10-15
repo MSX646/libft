@@ -6,7 +6,7 @@
 /*   By: kezekiel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 14:57:05 by kezekiel          #+#    #+#             */
-/*   Updated: 2021/10/08 15:06:39 by kezekiel         ###   ########.fr       */
+/*   Updated: 2021/10/15 10:36:12 by kezekiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	while (s[i])
 	{
 		f(i, &s[i]);

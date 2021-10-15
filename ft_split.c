@@ -6,7 +6,7 @@
 /*   By: kezekiel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:17:13 by kezekiel          #+#    #+#             */
-/*   Updated: 2021/10/04 13:19:21 by kezekiel         ###   ########.fr       */
+/*   Updated: 2021/10/15 10:39:25 by kezekiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ char	**ft_split(const char *str, char c)
 	char	**res;
 	int		words;
 
+	if (!str)
+		return (NULL);
 	words = count_words(str, c);
 	res = (char **)malloc(sizeof(char *) * (words + 1));
 	if (res == NULL)

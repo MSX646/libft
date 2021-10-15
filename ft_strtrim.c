@@ -6,7 +6,7 @@
 /*   By: kezekiel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 12:45:01 by kezekiel          #+#    #+#             */
-/*   Updated: 2021/10/04 13:16:51 by kezekiel         ###   ########.fr       */
+/*   Updated: 2021/10/15 10:38:42 by kezekiel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	i;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = 0;
 	while (s1[start] && ft_inset(s1[start], set))
 		start++;
